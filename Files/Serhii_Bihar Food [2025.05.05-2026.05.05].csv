@@ -1,0 +1,18 @@
+﻿Id,Category,Amount,Currency,Date,Description
+1,Food,200.00,USD,2026-04-06 13:22:01,Pizza and Cola
+3,Food,250.00,UAH,2026-04-10 10:23:10,Food for evening
+26,Food,12.50,USD,2026-04-01 05:30:00,Morning coffee
+28,Food,8.20,USD,2026-04-02 07:00:00,Snacks
+31,Food,15.75,USD,2026-04-03 10:10:00,Lunch at bistro
+34,Food,19.90,USD,2026-04-05 17:00:00,Pizza delivery
+37,Food,5.50,USD,2026-04-06 11:20:00,Ice cream
+39,Food,33.20,USD,2026-04-07 16:30:00,Grocery shopping
+44,Food,6.40,USD,2026-04-10 09:00:00,Bottled water
+49,Food,877.59,USD,2026-05-01 13:38:05,New Food from Dubai
+60,Food,150.00,USD,2026-04-20 07:00:00,Grocery shopping
+66,Food,210.30,USD,2026-04-23 07:10:00,Supermarket
+72,Food,95.00,USD,2026-04-26 08:00:00,Fruits
+78,Food,310.00,USD,2026-04-29 07:00:00,Meat
+84,Food,180.00,USD,2026-05-01 05:30:00,Bread and Milk
+90,Food,200.00,USD,2026-05-01 14:00:00,Vegetables
+96,Food,50.00,USD,2026-05-01 17:00:00,Snacks

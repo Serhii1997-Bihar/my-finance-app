@@ -1,0 +1,29 @@
+﻿Id,Category,Amount,Currency,Date,Description
+1,Food,200.00,USD,2026-04-06 13:22:01,Pizza and Cola
+26,Food,12.50,USD,2026-04-01 05:30:00,Morning coffee
+27,Clothes,45.00,USD,2026-04-01 09:15:00,New t-shirt
+28,Food,8.20,USD,2026-04-02 07:00:00,Snacks
+29,Travelling,22.40,USD,2026-04-02 15:45:00,Taxi to center
+30,Medical,35.00,USD,2026-04-03 06:20:00,Pharmacy
+31,Food,15.75,USD,2026-04-03 10:10:00,Lunch at bistro
+32,Sport,50.00,USD,2026-04-04 04:00:00,Gym membership
+33,Other,7.30,USD,2026-04-04 12:30:00,Notebook
+34,Food,19.90,USD,2026-04-05 17:00:00,Pizza delivery
+35,Clothes,11.00,USD,2026-04-05 08:00:00,Socks pack
+36,Travelling,42.10,USD,2026-04-06 03:45:00,Train ticket
+37,Food,5.50,USD,2026-04-06 11:20:00,Ice cream
+38,Sport,28.00,USD,2026-04-07 15:00:00,Yoga class
+39,Food,33.20,USD,2026-04-07 16:30:00,Grocery shopping
+40,Other,14.00,USD,2026-04-08 13:40:00,Gift for friend
+41,Travelling,9.99,USD,2026-04-08 05:00:00,Bus pass
+42,Medical,25.60,USD,2026-04-09 07:15:00,Vitamins
+43,Clothes,48.50,USD,2026-04-09 14:50:00,Running shoes
+44,Food,6.40,USD,2026-04-10 09:00:00,Bottled water
+45,Sport,37.00,USD,2026-04-10 11:30:00,Pool entry
+47,Transfer,10.00,USD,2026-04-10 19:32:16,Inward transfer to Serhii_Bihar
+48,Sport,200.00,USD,2026-04-23 08:45:45,New Food in China room
+49,Food,877.59,USD,2026-05-01 13:38:05,New Food from Dubai
+5,Travelling,25.00,EUR,2026-04-10 10:24:06,Traveling to Koshice
+2,Sport,150.00,UAH,2026-04-10 10:22:54,Activity in Gym
+3,Food,250.00,UAH,2026-04-10 10:23:10,Food for evening
+4,Clothes,1500.00,UAH,2026-04-10 10:23:33,New jacket for wife

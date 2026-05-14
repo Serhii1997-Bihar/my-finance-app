@@ -5,7 +5,14 @@ using MyFinance_App.Models;
 
 namespace MyFinance_App.Services;
 
-public class CurrencyProvider(AppDbContext context)
+public interface ICurrencyProvider
+{
+    Task<Dictionary<string, decimal>> GetLatestRatesAsync();
+    Task UpdateCurrenciesFromApiAsync();
+    Task<List<Currency>> GetCurrencies();
+}
+
+public class CurrencyProvider(AppDbContext context) : ICurrencyProvider
 {
     private readonly HttpClient _httpClient = new();
     private const string ApiUrl = "https://open.er-api.com/v6/latest/USD";

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyFinance_App.Database;
 using MyFinance_App.Models;
+using MyFinance_App.Services;
 
 namespace MyFinance_App.Services;
 
@@ -10,7 +11,7 @@ public interface IFinanceManager
     Task<bool> SendMoneyAsync(int senderId, decimal amount, string receiverUsername, int bankId);
 }
 
-public class FinanceManager(AppDbContext context, IBankManager bankManager) : IFinanceManager
+public class FinanceManager(AppDbContext context, IBankManager bankManager, ILimitManager limitManager) : IFinanceManager
 {
     public async Task<bool> AddTransactionAsync(int userId, decimal amount, int categoryId, string description)
     {
@@ -45,6 +46,12 @@ public class FinanceManager(AppDbContext context, IBankManager bankManager) : IF
     
             await context.SaveChangesAsync();
             await dbTransaction.CommitAsync();
+
+            bool sentMessage = await limitManager.SendMessageAboutLimitation(user.Id);
+            if (!sentMessage)
+            {
+                Console.WriteLine($"Message not sent to {user.Email}");
+            }
         
             return true;
         }
@@ -73,7 +80,7 @@ public class FinanceManager(AppDbContext context, IBankManager bankManager) : IF
             var bank = await context.Banks
                 .FirstOrDefaultAsync(b => b.Id == bankId);
 
-            if (sender == null || receiver == null || sender.Id == receiver.Id || bank == null) return false;
+            if (receiver == null || sender.Id == receiver.Id || bank == null) return false;
 
             decimal fee = amount * (bank.Fees / 100.0m);
             decimal totalToDeduct = amount + fee;
@@ -105,6 +112,12 @@ public class FinanceManager(AppDbContext context, IBankManager bankManager) : IF
             
             await context.SaveChangesAsync();
             await dbTransaction.CommitAsync();
+            
+            bool sentMessage = await limitManager.SendMessageAboutLimitation(sender.Id);
+            if (!sentMessage)
+            {
+                Console.WriteLine($"Message not sent to {sender.Email}");
+            }
             
             return true;
         }
