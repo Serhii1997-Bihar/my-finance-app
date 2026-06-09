@@ -33,11 +33,18 @@ Console.WriteLine("Rates updated successfully!");
 
 using (var scope = host.Services.CreateScope())
 {
+    var bankManager = scope.ServiceProvider.GetRequiredService<IBankManager>();
+    await bankManager.RemindDebtor();
+}
+Console.WriteLine("Debtors notified successfully!");
+
+using (var scope = host.Services.CreateScope())
+{
     var mainMenu = scope.ServiceProvider.GetRequiredService<MainMenu>();
     await mainMenu.StartAsync();
 }
 
-public class MainMenu(IAuthService authService, IFinanceManager financeManager, IAnalyticService analyticService, 
+public class MainMenu(IAuthService authService, IFinanceManager financeManager, IAnalyticService analyticService, IBankManager bankManager,
     IStorageService storageService, IUserData userData, ICurrencyProvider currencyProvider, IFamilyData familyData)
 {
     public async Task StartAsync()
@@ -277,7 +284,7 @@ public class MainMenu(IAuthService authService, IFinanceManager financeManager, 
     private async Task RunSettingsMenu(int userId)
     {
         Console.WriteLine("\n=== Settings Menu ===");
-        Console.WriteLine("1) User Data, 2) Currency, 3) My Family, 0) Back");
+        Console.WriteLine("1) User Data, 2) Currency, 3) My Family, 4) Allow Credit, 0) Back");
         var user = await userData.GetUserByIdAsync(userId);
 
         var choice = Console.ReadLine();
@@ -352,7 +359,26 @@ public class MainMenu(IAuthService authService, IFinanceManager financeManager, 
                 }
 
                 break;
+            
+            case "4":
+                Console.WriteLine("You need enter amount (USD):");
+                int.TryParse(Console.ReadLine(), out int amount);
+                
+                Console.WriteLine("You need enter bankId for transaction");
+                int.TryParse(Console.ReadLine(), out int bankId);
 
+                bool allowCredit = await bankManager.AllowCredit(userId, amount, bankId);
+                if (allowCredit)
+                {
+                    Console.WriteLine("Success");
+                }
+                
+                else
+                {
+                    Console.WriteLine("Your family has not money enough");
+                }
+                break;
+                
             case "0":
                 return;
         }
